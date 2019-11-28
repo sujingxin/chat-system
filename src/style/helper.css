@@ -1,0 +1,138 @@
+/**
+* 使用vw布局在部分机型出现小图片不显示的问题，添加此行解决
+**/
+img{
+  content: normal !important;
+}
+/**
+  * 部分项目游戏规则添加此类名来修改文字颜色
+  * 注意：aspect-ratio属性不能和其他属性写在一起
+  **/
+.color_orange{
+  color: #FF6600;
+}
+/**
+  * 元素容器宽高比
+  **/
+[aspectratio]{
+  position: relative;
+}
+[aspectratio]::before{
+  width: 1px;
+  height: 0;
+  margin-left: -1px;
+  display: block;
+  content: '';
+}
+[aspectratio-content]{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/**
+    * 1px 方案
+    * 例：border-image: svg(1px-border param(--color red)) 1 stretch;
+    **/
+
+@svg 1px-border{
+  width: 4px;
+  height: 4px;
+  @rect{
+    width: 100%;
+    height: 100%;
+
+    fill: transparent;
+    stroke: var(--color, black);
+    stroke-width: 25%;
+  }
+}
+
+/**
+    * 文字超出显示点点点
+    **/
+.text-overflow-ellipsis{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/**
+    * 清除iOS下按钮背景
+    **/
+
+a
+,
+button
+,
+input{
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/**
+    * 奖品可领取，摇晃
+    **/
+
+/*base code*/
+.animated{
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animated.infinite{
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+.animated.hinge{
+  animation-name: tada;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+/*the animation definition*/
+
+/* 使用方法：再css中加入 animation: tada 2s ease infinite reverse; */
+@keyframes tada{
+  0%{
+    -webkit-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  10%
+  ,
+  20%{
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    -ms-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+  30%
+  ,
+  50%
+  ,
+  70%
+  ,
+  90%{
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+  40%
+  ,
+  60%
+  ,
+  80%{
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+  100%{
+    -webkit-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
